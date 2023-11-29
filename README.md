@@ -118,9 +118,9 @@ The second row (prefixed by the hash character, `#`) is the comment line. The re
 IMPORTANT: The weather data must be complete, without gaps in data or missing values.
 
 ## API
-The source code for Swit.jl is heavily commented. Kindly refer to code documentation.
+The source code for Sawit.jl is heavily commented. Kindly refer to code documentation.
 
-## Model validation
+## Data availability
 Kindly contact Sime Darby Research Berhad for obtaining the historical data used to validate this model.
 
 ## References
