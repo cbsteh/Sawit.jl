@@ -2,7 +2,7 @@
 
 ## Overview
 
-Sawit.jl is a semi-mechanistic oil palm growth and yield model. Sawit.jl is a significant update to its predecessor [PySawit](https://github.com/cbsteh/PySawit), our early Python-based model. Because Sawit.jl is written in Julia and its code heavvily optimized, this model runs very much faster by as much as 30 times than PySawit.
+Sawit.jl is a semi-mechanistic oil palm growth and yield model. Sawit.jl is a significant update to its predecessor [PySawit](https://github.com/cbsteh/PySawit), our early Python-based model. Because Sawit.jl is written in Julia and its code heavily optimized, this model runs very much faster by as much as 30 times than PySawit.
 
 Sawit.jl was developed for Malaysian growing conditions. Moreover, its simulations were validated against historical data of field measurements from seven oil palm plantations in the country. These seven sites, across Peninsular Malaysia, differed in their soil type (Inceptisols and Ultisols), planting density (82 to 299 palms/ha), soil texture (27 to 59% clay and 7 to 67% sand), and annual rainfall amount (1800 to 2800 mm/yr).
 
