@@ -136,4 +136,5 @@ Cheah, S. S., Teh, C. B. S. (2020). Parameterization of the Farquhar-von Caemmer
 
 Cheah, S. S., Teh, C. B. S., Mohd Razi, I., & Mohd Rafii, Y. (2020). Modelling hourly air temperature, relative humidity and solar irradiance over several major oil palm growing areas in Malaysia. Journal of Oil Palm Research, 32(1): 34-49. [https://doi.org/10.21894/jopr.2020.0010](https://doi.org/10.21894/jopr.2020.0010)
 
-Teh, C. B. S., & Cheah, S. S. (2018). Modelling crop growth and yield in palm oil cultivation. In A. Rival (Ed.), Achieving sustainable cultivation of oil palm (Vol. 1, pp. 183-227). Burleigh Dodds Science Publishing. [https://doi.org/10.19103/AS.2017.0018.10] (https://doi.org/10.19103/AS.2017.0018.10)
+Teh, C. B. S., & Cheah, S. S. (2018). Modelling crop growth and yield in palm oil cultivation. In A. Rival (Ed.), Achieving sustainable cultivation of oil palm (Vol. 1, pp. 183-227). Burleigh Dodds Science Publishing. [https://doi.org/10.19103/AS.2017.0018.10](https://doi.org/10.19103/AS.2017.0018.10)
+
