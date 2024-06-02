@@ -39,14 +39,14 @@ where `jsonfname` holds the file name of the model input for the Merlimau site. 
 
 `res = start(jsonfname)` starts the simulation and upon completion, `res` contains the model daily and annual results, which can be retrieved by `res.daly` and `res.annl`, respectively. `res.mi` holds the model inputs, as read in earlier from the model input file.
 
-`plot_annual` and `plot_daily` are functions to plot the model results. Argument `saveplot` decides whether to save the plotted charts as `png` picture format.
+`plot_annual` and `plot_daily` are functions to plot the model results on an annual and daily basis, respectively. Argument `saveplot` decides whether to save the plotted charts as a `PNG` picture format.
 
 ## Input file (JSON format)
 Model inputs are stored in a plain text file (JSON format) that can be easily edited in any text editor software. The model input file has the following parameters:
 
 - `random generator seed`: seed for the random number generator (enter -1 for stochastic runs, else any integer value >0 for deterministic runs)
 - `no. of simulation days`: number of simulation days (days), e.g., for 10 years, enter "3650"
-- `data folder`: model input JSON file path. If code "@@" is given, the default working folder path will be used. This default folder path is the location of the model input `JSON` file. It is assumed the weather file and boxcar file (if any) will be located in this file path. The model output resaults will also be saved here.
+- `data folder`: model input JSON file path. If code "@@" is given, the default working folder path will be used. This default folder path is the location of the model input `JSON` file. It is assumed the weather file and boxcar file (if any) will be located in this file path. The model output results will also be saved here.
 - `boxcar filename`: name of Boxcar file, typically left blank
 - `weather filename`: name of daily weather file
 - `output filename`: name of file where model output will be saved. "-daily" and "-annual" will be appended to the given file name for daily and annual output, respectively
@@ -59,19 +59,19 @@ Model inputs are stored in a plain text file (JSON format) that can be easily ed
 - `year`: year of field planting
 - `month`: month of field planting (Jan=1, Feb=2,…,Dec=12)
 - `day`: day of field planting
-- `tree age`: age of tree at field planting date (days)
-- `planting density`: planting density (palms/ha)
+- `tree age`: age of tree at field planting date (days), usually 365 days (for one year old)
+- `planting density`: planting density or standing palms per hectare (palms/ha)
 - `trunk height`: height of the trunk at field planting (m), usually set to 0
 - `thinning planting density`: thinning planting density (palms/ha) (-1 for no thinning)
 - `thinning tree age`: age of tree when thinning (days)
-- `female prob`: probability getting female flowers (0 - 1)
-- `pinnae wgt`: initial pinnae weight (kg DM/palm) at time of field planting
-- `rachis wgt`: initial rachis weight (kg DM/palm)
-- `trunk wgt`: initial trunk weight (kg DM/palm)
-- `roots wgt`: initial roots weight (kg DM/palm)
-- `maleflo wgt`: initial male flowers weight (kg DM/palm)
-- `femaflo wgt`: initial female flowers weight (kg DM/palm)
-- `bunches wgt`: initial bunches weight (kg DM/palm)
+- `female prob`: probability getting female flowers (0 - 1), where 0 is never female and 1 is always female, 0.5 is 50-50 chance of female
+- `pinnae wgt`: initial pinnae dry weight (kg DM/palm) at time of field planting
+- `rachis wgt`: initial rachis dry weight (kg DM/palm)
+- `trunk wgt`: initial trunk dry weight (kg DM/palm)
+- `roots wgt`: initial roots dry weight (kg DM/palm)
+- `maleflo wgt`: initial male flowers dry weight (kg DM/palm)
+- `femaflo wgt`: initial female flowers dry weight (kg DM/palm)
+- `bunches wgt`: initial bunches dry weight (kg DM/palm)
 - `no. of intervals`: no. of subintervals per day for daily water integration (at least 100)
 - `rooting depth`: initial rooting depth (m)
 - `max. rate rooting depth`: max. rate of increase in rooting depth (m/day)
@@ -97,9 +97,9 @@ Refer to model input file `input.json` for sample model input entries. You would
 ## Daily weather file
 Daily weather file for a given site must be prepared. The file must have at least four daily weather parameters: min. and max. air temperature (deg. Celcius), mean daily wind speed (m/s), and daily rainfall amount (mm). Refer to the sample Merlimau weather file `merlimau-wthr.csv`.
 
-Weather data must be arranged by rows to represent the weather for each day, and each column represents the weather proprties. All values are separated by comma (comma-delimited values or CSV). The weather file must be in plain text format.
+Weather data must be arranged by rows to represent the weather for each day, and each column represents the weather properties. All values are separated by comma (comma-delimited values or CSV). The weather file must be in plain text format.
 
-For instance, the first few lines in the sample Merlimau weather file are:
+For instance, the first few lines in the sample Merlimau weather file are as follows:
 
 ```
 year,month,day,tmin,tmax,wind,rain
@@ -111,17 +111,30 @@ year,month,day,tmin,tmax,wind,rain
 1987,1,5,21.7,36.4,2.1,0
 ```
 
-where the first row lists the headers so that the `year`, `month`, and `day` are the first three columns for date, followed by the weather parameters `tmin` and `tmax` for min. and max. daily air temperature, respectively, `wind` for mean daily wind speed, and `rain` for amount of daily rainfall. Headers must always be placed on the first line.
+where the first row lists the headers so that the `year`, `month`, and `day` are the first three columns for date, followed by the weather parameters `tmin` and `tmax` for min. and max. daily air temperature (deg. C), respectively, `wind` for mean daily wind speed (m/s), and `rain` for amount of daily rainfall (mm/day).
 
-The second row (prefixed by the hash character, `#`) is the comment line. The rest of this line will not be read, and it is there to describe the weather data, such as site and GPS location and period of weather data. Comment line must always be on the second line.
+Headers must always be placed on the first line. Please note that these headers are case-sensitive.
+
+The second row (prefixed by the hash character, `#`) is the comment line. The rest of this line will not be read, and its purpose is solely for documentation, such as to describe the weather data, such as site and GPS location and period of weather data. You may have more than one comment line, but all comment lines must be continuous, e.g., from lines 2 to 4 (without a break). Comment lines must always start on the second line.
 
 IMPORTANT: The weather data must be complete, without gaps in data or missing values.
 
 ## API
-The source code for Sawit.jl is heavily commented. Kindly refer to code documentation.
+The source code for Sawit.jl is heavily commented. Kindly refer to the code documentation.
 
-## Data availability
-Kindly contact Sime Darby Research Berhad for obtaining the historical data used to validate this model.
+## Oil palm data availability
+Kindly contact Sime Darby Plantation Research Sdn. Bhd., Malaysia for permission obtaining the historical oil palm data used to validate this model.
 
 ## References
-[Piepho, H.-P. (2004). An Algorithm for a Letter-Based Representation of All-Pairwise Comparisons. Journal of Computational and Graphical Statistics, 13(2), 456–466. doi:10.1198/1061860043515](https://doi.org/10.1198/1061860043515)
+[Teh, C. B. S., Cheah, S. S., & Kulaveerasingam, H. (2024). Development and validation of an oil palm model for a wide range of planting densities
+and soil textures in Malaysian growing conditions. Heliyon. (Under review)]
+
+[Teh, C. B. S. & Cheah, S. S. (2023). Modelling of growth and FFB yield for increasing oil palm productivity. Book of Abstracts. Agriculture, Biotechnology & Sustainability (ABS). MPOB International Palm Oil Congress and Exhibition. Navigating Uncertainties Building Resilience (p. 19). PIPOC 2023. Kajang: Malaysian Palm Oil Board (MPOB) Press.](https://www.researchgate.net/profile/Christopher-Teh-2/publication/376714242_Modelling_of_Growth_and_FFB_Yield_for_Increasing_Oil_Palm_Productivity/links/65845c263c472d2e8e779dc4/Modelling-of-Growth-and-FFB-Yield-for-Increasing-Oil-Palm-Productivity.pdf)
+
+[Siang, C. S., Wahid, A. A. A., & Teh, C. B. S. (2022) Standing biomass, dry-matter production and nutrient demand of Tenera oil palm. Agronomy, 12, 426. https://doi.org/10.3390/agronomy12020426](https://doi.org/10.3390/agronomy12020426)
+
+[Cheah, S. S., Teh, C. B. S. (2020). Parameterization of the Farquhar-von Caemmerer-Berry C3 photosynthesis model for oil palm. Photosynthetica, 58(3): 769-779. https://doi.org/10.32615/ps.2020.020](https://doi.org/10.32615/ps.2020.020)
+
+[Cheah, S. S., Teh, C. B. S., Mohd Razi, I., & Mohd Rafii, Y. (2020). Modelling hourly air temperature, relative humidity and solar irradiance over several major oil palm growing areas in Malaysia. Journal of Oil Palm Research, 32(1): 34-49. https://doi.org/10.21894/jopr.2020.0010](https://doi.org/10.21894/jopr.2020.0010)
+
+[Teh, C. B. S., & Cheah, S. S. (2018). Modelling crop growth and yield in palm oil cultivation. In A. Rival (Ed.), Achieving sustainable cultivation of oil palm (Vol. 1, pp. 183-227). Burleigh Dodds Science Publishing. https://doi.org/10.19103/AS.2017.0018.10] (https://doi.org/10.19103/AS.2017.0018.10)
