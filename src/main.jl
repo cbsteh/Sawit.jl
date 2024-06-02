@@ -1,21 +1,21 @@
 using Sawit
 
-include("preamble.jl")
+# include("preamble.jl")
 
 
-loc = "sabrang"
-pds, dir = site(loc; include_main=true, include_kalumpong=false)
-jsonfname = dir * "input.json"
-println("Site = $loc")
-println("Planting densities = $pds")
-println("Input JSON file = $(pwd())/$jsonfname")
+# loc = "sg-buloh"
+# pds, dir = site(loc; include_main=false, include_kalumpong=true)
+# jsonfname = dir * "input.json"
+# println("Site = $loc")
+# println("Planting densities = $pds")
+# println("Input JSON file = $(pwd())/$jsonfname")
 
-gof = [GoF.NMAE, GoF.NMBE, GoF.KGE]
-res = multirun(jsonfname, loc, pds;
-               gof=gof,
-               plot_valid=true, saveplot_valid=false,
-               plot_combo=true, saveplot_combo=false,
-               plot_index=false, saveplot_index=false)
+# gof = [GoF.NMAE, GoF.NMBE, GoF.KGE]
+# res = multirun(jsonfname, loc, pds;
+#                gof=gof,
+#                plot_valid=true, saveplot_valid=true,
+#                plot_combo=true, saveplot_combo=true,
+#                plot_index=true, saveplot_index=true)
 
 # @tictoc begin
 #     res = runsimhour!(jsonfname;
@@ -25,11 +25,13 @@ res = multirun(jsonfname, loc, pds;
 #                       saveplot=false)
 # end
 
-# @tictoc begin
-#     res = start(jsonfname)
-#     plot_annual(res.annl, res.mi; saveplot=false)
-#     plot_daily(res.daly, res.mi; saveplot=false)
-# end
+
+jsonfname = "data/merlimau/input.json"
+@tictoc begin
+    res = start(jsonfname)
+    plot_annual(res.annl, res.mi; saveplot=false)
+    plot_daily(res.daly, res.mi; saveplot=false)
+end
 
 # pairdf = DataFrame(pd=Int[], yap=Float64[], yield=Float64[], yield_sim=Float64[])
 # cnt = size(res.valid)[1]

@@ -8,7 +8,7 @@ Sawit.jl was developed for Malaysian growing conditions. Moreover, its simulatio
 
 The model showed overall good accuracy in simulating oil palm parameters (except for trunk weight) across diverse conditions, with model agreement metrics ranging from 6 to 27% for model absolute errors, -22 to +17% for model bias, and 0.38 to 0.98 for the Kling-Gupta Efficiency (KGE) index.
 
-The model further responded to oil palm yield impacts from sudden rainfall changes, like during El Niño and La Niña events, and captured the effects of soil texture, rainfall, and meteorological factors on water deficits and crop photosynthesis.
+The model further predicted oil palm yield response to sudden rainfall changes, like during El Niño and La Niña events, and captured the effects of soil texture, rainfall, and meteorological factors on water deficits and crop photosynthesis.
 
 ## Usage
 Clone this repo by
@@ -41,6 +41,17 @@ where `jsonfname` holds the file name of the model input for the Merlimau site. 
 
 `plot_annual` and `plot_daily` are functions to plot the model results on an annual and daily basis, respectively. Argument `saveplot` decides whether to save the plotted charts as a `PNG` picture format.
 
+You can save the model output results to a `CSV` file as follows:
+
+```
+using CSV
+
+CSV.write(“annual-results.csv”, res.annl)       # annual results to file
+CSV.write(“daily-results.csv”, res.daly)           # daily results to file
+```
+
+which is possible because `res.annl` and `res.daly` return a `DataFrame` type.
+
 ## Input file (JSON format)
 Model inputs are stored in a plain text file (JSON format) that can be easily edited in any text editor software. The model input file has the following parameters:
 
@@ -51,51 +62,52 @@ Model inputs are stored in a plain text file (JSON format) that can be easily ed
 - `weather filename`: name of daily weather file
 - `output filename`: name of file where model output will be saved. "-daily" and "-annual" will be appended to the given file name for daily and annual output, respectively
 - `co2_path`: see comments for the `CCfn` function in the `mi.cc.jl` file, usually set as "past" for historical ambient CO2 levels
-- `ta_path`: see comments for the `CCfn` function in the `mi.cc.jl` file, usually set as "0" for no air temperature change
-- `wind_path`: see comments for the `CCfn` function in the `mi.cc.jl` file, usually set as "0" for no wind speed change
-- `rain_path`: see comments for the `CCfn` function in the `mi.cc.jl` file, usually set as "0" for no rainfall amount change
+- `ta_path`: see comments for the `CCfn` function in the `mi.cc.jl` file. If set to "0", air temperature in the weather file will be read without change.
+- `wind_path`: see comments for the `CCfn` function in the `mi.cc.jl` file,If set to "0", wind speed in the weather file will be read without change.
+- `rain_path`: see comments for the `CCfn` function in the `mi.cc.jl` file. If set to "0", rainfall in the weather file will be read without change.
 - `site latitude`: latitude of site (decimal degrees)
 - `weather station hgt`: height of weather station from ground (m)
 - `year`: year of field planting
-- `month`: month of field planting (Jan=1, Feb=2,…,Dec=12)
+- `month`: month of field planting (enter 1 for Jan, 2 for Feb, …, 12 for Dec)
 - `day`: day of field planting
 - `tree age`: age of tree at field planting date (days), usually 365 days (for one year old)
-- `planting density`: planting density or standing palms per hectare (palms/ha)
+- `planting density`: planting density or no. of palms per hectare (palms/ha)
 - `trunk height`: height of the trunk at field planting (m), usually set to 0
-- `thinning planting density`: thinning planting density (palms/ha) (-1 for no thinning)
-- `thinning tree age`: age of tree when thinning (days)
-- `female prob`: probability getting female flowers (0 - 1), where 0 is never female and 1 is always female, 0.5 is 50-50 chance of female
+- `thinning planting density`: thin to this final planting density (palms/ha) (-1 for no thinning)
+- `thinning tree age`: age of tree when thinning was done (days); ignored if `thinning planting density` is set to -1
+- `female prob`: probability of getting female flowers (0 - 1), where 0 is never female and 1 is always female, 0.5 is 50-50 chance of female
 - `pinnae wgt`: initial pinnae dry weight (kg DM/palm) at time of field planting
-- `rachis wgt`: initial rachis dry weight (kg DM/palm)
-- `trunk wgt`: initial trunk dry weight (kg DM/palm)
-- `roots wgt`: initial roots dry weight (kg DM/palm)
-- `maleflo wgt`: initial male flowers dry weight (kg DM/palm)
-- `femaflo wgt`: initial female flowers dry weight (kg DM/palm)
-- `bunches wgt`: initial bunches dry weight (kg DM/palm)
-- `no. of intervals`: no. of subintervals per day for daily water integration (at least 100)
-- `rooting depth`: initial rooting depth (m)
+- `rachis wgt`: initial rachis dry weight (kg DM/palm) at time of field planting
+- `trunk wgt`: initial trunk dry weight (kg DM/palm) at time of field planting
+- `roots wgt`: initial roots dry weight (kg DM/palm) at time of field planting
+- `maleflo wgt`: initial male flowers dry weight (kg DM/palm) at time of field planting
+- `femaflo wgt`: initial female flowers dry weight (kg DM/palm) at time of field planting
+- `bunches wgt`: initial bunches dry weight (kg DM/palm) at time of field planting
+- `no. of intervals`: no. of subintervals per day for daily soil water flow integration (set to 100 or more time steps in a day)
+- `rooting depth`: initial rooting depth (m) at time of field planting
 - `max. rate rooting depth`: max. rate of increase in rooting depth (m/day)
 - `has watertable`: `true` for water table presence, else `false` for none
-- `no. of soil layers`: no. of soil layers (need at least 2)
+- `no. of soil layers`: no. of soil layers (at least 2)
 - `layers`: soil layer properties, where each layer comprises four parameters, which are:
     - `thick`: layer thickness (m)
     - `vwc`: initial volumetric soil water content (m3/m3)
     - `clay`: amount of clay in the layer (%)
     - `sand`: amount of sand in the layer (%)
-- `sla`: table of tree age vs. specific leaf area (m2 leaf/kg DM leaf)
-- `pinnae n`: table of tree age vs. pinnae N content (fraction)
-- `pinnae m`: table of tree age vs. pinnae mineral content (fraction)
-- `rachis n`: table of tree age vs. rachis N content (fraction)
-- `rachis m`: table of tree age vs. rachis mineral content (fraction)
-- `roots n`: table of tree age vs. roots N content (fraction)
-- `roots m`: table of tree age vs. roots mineral content (fraction)
-- `trunk n`: table of tree age vs. trunk N content (fraction)
-- `trunk m`: table of tree age vs. trunk mineral content (fraction)
+    - note: if you have 3 soil layers, you will need 3 sets of `’thick`, `vwc`, `clay`, and `sand` parameters for each soil layer. See model input file `input.json` for example.
+- `sla`: table of tree age vs. specific leaf area (m2 leaf/kg DM leaf); normally use default
+- `pinnae n`: table of tree age vs. pinnae N content (fraction); normally use default
+- `pinnae m`: table of tree age vs. pinnae mineral content (fraction); normally use default
+- `rachis n`: table of tree age vs. rachis N content (fraction); normally use default
+- `rachis m`: table of tree age vs. rachis mineral content (fraction); normally use default
+- `roots n`: table of tree age vs. roots N content (fraction); normally use default
+- `roots m`: table of tree age vs. roots mineral content (fraction); normally use default
+- `trunk n`: table of tree age vs. trunk N content (fraction); normally use default
+- `trunk m`: table of tree age vs. trunk mineral content (fraction); normally use default
 
 Refer to model input file `input.json` for sample model input entries. You would normally change only a few of these entries, keeping the rest at their default values.
 
 ## Daily weather file
-Daily weather file for a given site must be prepared. The file must have at least four daily weather parameters: min. and max. air temperature (deg. Celcius), mean daily wind speed (m/s), and daily rainfall amount (mm). Refer to the sample Merlimau weather file `merlimau-wthr.csv`.
+Daily weather file for a given site must be prepared. The file must have at least four daily weather parameters: min. and max. air temperature (deg. Celsius), mean daily wind speed (m/s), and daily rainfall amount (mm). Refer to the sample Merlimau weather file `merlimau-wthr.csv`.
 
 Weather data must be arranged by rows to represent the weather for each day, and each column represents the weather properties. All values are separated by comma (comma-delimited values or CSV). The weather file must be in plain text format.
 
