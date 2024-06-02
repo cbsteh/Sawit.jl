@@ -126,15 +126,14 @@ The source code for Sawit.jl is heavily commented. Kindly refer to the code docu
 Kindly contact Sime Darby Plantation Research Sdn. Bhd., Malaysia for permission obtaining the historical oil palm data used to validate this model.
 
 ## References
-[Teh, C. B. S., Cheah, S. S., & Kulaveerasingam, H. (2024). Development and validation of an oil palm model for a wide range of planting densities
-and soil textures in Malaysian growing conditions. Heliyon. (Under review)]
+Teh, C. B. S., Cheah, S. S., & Kulaveerasingam, H. (2024). Development and validation of an oil palm model for a wide range of planting densities and soil textures in Malaysian growing conditions. Heliyon. (Under review)
 
-[Teh, C. B. S. & Cheah, S. S. (2023). Modelling of growth and FFB yield for increasing oil palm productivity. Book of Abstracts. Agriculture, Biotechnology & Sustainability (ABS). MPOB International Palm Oil Congress and Exhibition. Navigating Uncertainties Building Resilience (p. 19). PIPOC 2023. Kajang: Malaysian Palm Oil Board (MPOB) Press.](https://www.researchgate.net/profile/Christopher-Teh-2/publication/376714242_Modelling_of_Growth_and_FFB_Yield_for_Increasing_Oil_Palm_Productivity/links/65845c263c472d2e8e779dc4/Modelling-of-Growth-and-FFB-Yield-for-Increasing-Oil-Palm-Productivity.pdf)
+Teh, C. B. S. & Cheah, S. S. (2023). Modelling of growth and FFB yield for increasing oil palm productivity. Book of Abstracts. Agriculture, Biotechnology & Sustainability (ABS). MPOB International Palm Oil Congress and Exhibition. Navigating Uncertainties Building Resilience (p. 19). PIPOC 2023. Kajang: Malaysian Palm Oil Board (MPOB) Press. [PIPOC 2023 Book of Abstracts](https://www.researchgate.net/profile/Christopher-Teh-2/publication/376714242_Modelling_of_Growth_and_FFB_Yield_for_Increasing_Oil_Palm_Productivity/links/65845c263c472d2e8e779dc4/Modelling-of-Growth-and-FFB-Yield-for-Increasing-Oil-Palm-Productivity.pdf)
 
-[Siang, C. S., Wahid, A. A. A., & Teh, C. B. S. (2022) Standing biomass, dry-matter production and nutrient demand of Tenera oil palm. Agronomy, 12, 426. https://doi.org/10.3390/agronomy12020426](https://doi.org/10.3390/agronomy12020426)
+Siang, C. S., Wahid, A. A. A., & Teh, C. B. S. (2022) Standing biomass, dry-matter production and nutrient demand of Tenera oil palm. Agronomy, 12, 426. [https://doi.org/10.3390/agronomy12020426](https://doi.org/10.3390/agronomy12020426)
 
-[Cheah, S. S., Teh, C. B. S. (2020). Parameterization of the Farquhar-von Caemmerer-Berry C3 photosynthesis model for oil palm. Photosynthetica, 58(3): 769-779. https://doi.org/10.32615/ps.2020.020](https://doi.org/10.32615/ps.2020.020)
+Cheah, S. S., Teh, C. B. S. (2020). Parameterization of the Farquhar-von Caemmerer-Berry C3 photosynthesis model for oil palm. Photosynthetica, 58(3): 769-779. [https://doi.org/10.32615/ps.2020.020](https://doi.org/10.32615/ps.2020.020)
 
-[Cheah, S. S., Teh, C. B. S., Mohd Razi, I., & Mohd Rafii, Y. (2020). Modelling hourly air temperature, relative humidity and solar irradiance over several major oil palm growing areas in Malaysia. Journal of Oil Palm Research, 32(1): 34-49. https://doi.org/10.21894/jopr.2020.0010](https://doi.org/10.21894/jopr.2020.0010)
+Cheah, S. S., Teh, C. B. S., Mohd Razi, I., & Mohd Rafii, Y. (2020). Modelling hourly air temperature, relative humidity and solar irradiance over several major oil palm growing areas in Malaysia. Journal of Oil Palm Research, 32(1): 34-49. [https://doi.org/10.21894/jopr.2020.0010](https://doi.org/10.21894/jopr.2020.0010)
 
-[Teh, C. B. S., & Cheah, S. S. (2018). Modelling crop growth and yield in palm oil cultivation. In A. Rival (Ed.), Achieving sustainable cultivation of oil palm (Vol. 1, pp. 183-227). Burleigh Dodds Science Publishing. https://doi.org/10.19103/AS.2017.0018.10] (https://doi.org/10.19103/AS.2017.0018.10)
+Teh, C. B. S., & Cheah, S. S. (2018). Modelling crop growth and yield in palm oil cultivation. In A. Rival (Ed.), Achieving sustainable cultivation of oil palm (Vol. 1, pp. 183-227). Burleigh Dodds Science Publishing. [https://doi.org/10.19103/AS.2017.0018.10] (https://doi.org/10.19103/AS.2017.0018.10)
