@@ -4,7 +4,6 @@ using CairoMakie
 using CSV
 using DataFrames
 using Dates
-using Folds
 using Interpolations
 using JSON
 using LinearAlgebra
@@ -28,9 +27,6 @@ include("core/photosyn.jl")
 
 include("plots/nicescale.jl")
 include("plots/plotsim.jl")
-include("plots/cmesh2d.jl")
-include("plots/algolabels.jl")
-include("plots/validation.jl")
 
 include("runsim.jl")
 
@@ -85,18 +81,5 @@ export niceticks
 # plotsim.jl
 export plot_annual, plot_daily, plot_hourly, explore,
        create_figure, add_axis!, add_legend, add_lines!
-
-# cmesh2d.jl
-export Pt, Facet, CMesh2D
-export distance, mean_dist, min_dist, mpos, mindex, get_neighbors, centroid
-
-# algolabels.jl
-export is_available, has_label, reset_place!, save_places, load_places!,
-       swap_place!, find_places!, labelsize, segments_intersect,
-       create_mesh, fill_mesh!, draw_mesh!, draw_labels!, viz
-
-# validation.jl
-export ParDct
-export add_inset_axis!, getpar, validate, plot_gof, plot_pairs
 
 end   # module
