@@ -138,7 +138,7 @@ The source code for Sawit.jl is heavily commented. Kindly refer to the code docu
 Kindly contact Sime Darby Plantation Research Sdn. Bhd., Malaysia for permission obtaining the historical oil palm data used to validate this model.
 
 ## References
-Teh, C. B. S., Cheah, S. S., & Kulaveerasingam, H. (2024). Development and validation of an oil palm model for a wide range of planting densities and soil textures in Malaysian growing conditions. Heliyon. (Under review)
+Teh, C. B. S., Cheah, S. S., & Kulaveerasingam, H. (2024). Development and validation of an oil palm model for a wide range of planting densities and soil textures in Malaysian growing conditions. Heliyon. [https://doi.org/10.1016/j.heliyon.2024.e32561](https://doi.org/10.1016/j.heliyon.2024.e32561)
 
 Teh, C. B. S. & Cheah, S. S. (2023). Modelling of growth and FFB yield for increasing oil palm productivity. Book of Abstracts. Agriculture, Biotechnology & Sustainability (ABS). MPOB International Palm Oil Congress and Exhibition. Navigating Uncertainties Building Resilience (p. 19). PIPOC 2023. Kajang: Malaysian Palm Oil Board (MPOB) Press. [PIPOC 2023 Book of Abstracts](https://www.researchgate.net/profile/Christopher-Teh-2/publication/376714242_Modelling_of_Growth_and_FFB_Yield_for_Increasing_Oil_Palm_Productivity/links/65845c263c472d2e8e779dc4/Modelling-of-Growth-and-FFB-Yield-for-Increasing-Oil-Palm-Productivity.pdf)
 
